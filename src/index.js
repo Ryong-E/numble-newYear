@@ -1,1 +1,3 @@
-console.log('성공');
+import App from './App.js';
+
+new App(document.querySelector('body'));
