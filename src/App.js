@@ -1,5 +1,3 @@
-import HomePage from './pages/HomePage.js';
-import WritePage from './pages/WritePage.js';
 import router from './router.js';
 
 class App {
