@@ -7,7 +7,7 @@ const Header = () => {
   }
 
   return `
-    <header>
+    <header ${isHome === '/' && `style='justify-content:flex-end;'`}>
     ${backbutton}
         <a href='/write' id='logo'>HPNY 2023</a>
     </header>
