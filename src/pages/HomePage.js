@@ -13,6 +13,7 @@ class HomePage {
       .map((list) => {
         return `
       <li class='list'>
+      <a href='/detail?id=${list.postId}'>
         <div>
           <img src=${list.image} class='list-image'>
         </div>
@@ -20,6 +21,7 @@ class HomePage {
           <h1 class='list-title'>${list.title}</h1>
           <span class='list-content'>${list.content}</span>
         </div>
+        </a>
       </li>
     `;
       })
@@ -32,7 +34,7 @@ class HomePage {
     <div id='wrap'>
       <div id='container'>
         <div id='create-post-button-box'>
-          <a href='/upload' id='create-post-button'>새 글 작성하기</a>
+          <a href='/write' id='create-post-button'>새 글 작성하기</a>
         </div>
         <ul id='list-box'>
         ${posts}
