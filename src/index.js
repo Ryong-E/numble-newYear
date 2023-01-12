@@ -1,5 +1,6 @@
 import Header from './components/header.js';
 import HomePage from './pages/HomePage.js';
+import NotFoundPage from './pages/NotFoundPage.js';
 import WritePage from './pages/WritePage.js';
 
 const router = async () => {
@@ -17,7 +18,11 @@ const router = async () => {
 
   const foundPage = pageMatchs.find((pageMatch) => pageMatch.isMatch);
 
-  if (!foundPage) return (document.querySelector('#root').innerHTML = `<div>not found page</div>`);
+  if (!foundPage) {
+    const page = new NotFoundPage();
+    document.querySelector('#root').innerHTML = Header();
+    document.querySelector('#root').innerHTML += page.render();
+  }
 
   const page = new foundPage.route.element();
   document.querySelector('#root').innerHTML = Header();
