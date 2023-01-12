@@ -132,11 +132,30 @@ img {
   overflow: clip;
 }
 
+* {
+  font-family: 'Roboto' !important;
+}
+
 /* main css */
 
 header {
   position: fixed;
+  width: 640px;
+  height: 60px;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 0 20px;
+}
+#logo {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  color: black;
 }
 
 #root {
@@ -155,16 +174,44 @@ header {
 #container {
   width: 640px;
   height: 100%;
-  background-color: red;
-  padding: 16px;
+  display: flex;
+  justify-content: center;
 }
 
+#create-post-button-box {
+  width: 100%;
+  height: 90px;
+  background-color: white;
+  text-align: center;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 640px;
+  padding: 0 20px;
+  top: 40px;
+}
+
+#create-post-button {
+  color: white;
+  width: 640px;
+  height: 50px;
+  background: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  border-radius: 12px;
+}
 #list-box {
-  overflow-y: scroll;
   height: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 160px;
 }
 .list {
   width: 100%;
@@ -173,6 +220,7 @@ header {
   border: 1px solid #e2e2e2;
   border-radius: 12px;
   background-color: #ffffff;
+  box-shadow: 0px 4px 15px rgb(0 0 0 / 15%);
 }
 .list + .list {
   margin-top: 15px;
@@ -183,6 +231,14 @@ header {
   min-width: 120px;
   border-radius: 12px;
   object-fit: cover;
+  max-width: 120px;
+}
+.list-title,
+.list-content {
+  width: 400px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .description {
