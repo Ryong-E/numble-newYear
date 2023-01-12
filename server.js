@@ -4,9 +4,10 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-app.use('/', express.static('public'));
+app.use('/', express.static(path.resolve(__dirname, 'src', 'public')));
+
 app.get('/*', (req, res) => {
-  res.sendFile(path.resolve('public', 'index.html'));
+  res.sendFile(path.resolve('src', 'public', 'index.html'));
 });
 
 app.listen(port, () => {
