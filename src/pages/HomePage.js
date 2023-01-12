@@ -1,5 +1,4 @@
 import axios from 'axios';
-import List from '../components/listConvertToHtml.js';
 
 class HomePage {
   async getPosts() {
@@ -32,6 +31,9 @@ class HomePage {
     return `
     <div id='wrap'>
       <div id='container'>
+        <div id='create-post-button-box'>
+          <a href='/upload' id='create-post-button'>새 글 작성하기</a>
+        </div>
         <ul id='list-box'>
         ${posts}
         </ul>
