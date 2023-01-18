@@ -45,11 +45,13 @@ class DetailPage {
     $('#comment-list').addEventListener('click', async (event) => {
       try {
         if (event.target.localName !== 'button') return;
-        await axios.delete(`http://43.201.103.199/comment/${event.target.dataset.num}`);
-        this.#comments = await this.#comments.filter(
-          (comment) => String(comment.commentId) !== event.target.dataset.num,
-        );
-        this.#updateComment();
+        if (confirm('정말 삭제하시겠습니까?')) {
+          await axios.delete(`http://43.201.103.199/comment/${event.target.dataset.num}`);
+          this.#comments = await this.#comments.filter(
+            (comment) => String(comment.commentId) !== event.target.dataset.num,
+          );
+          this.#updateComment();
+        }
       } catch (error) {
         alert(error);
       }
@@ -81,9 +83,11 @@ class DetailPage {
   #handleClick() {
     $('#post-detail-button-box').addEventListener('click', async (event) => {
       if (event.target.id === 'post-delete-button') {
-        await axios.delete(`http://43.201.103.199/post/${this.#postInfo.postId}`);
-        history.replaceState(null, null, '/');
-        router();
+        if (confirm('정말 삭제하시겠습니까?')) {
+          await axios.delete(`http://43.201.103.199/post/${this.#postInfo.postId}`);
+          history.replaceState(null, null, '/');
+          router();
+        }
       }
       if (event.target.id === 'post-update-button') {
         history.pushState(null, null, `/edit?id=${this.#postInfo.postId}`);
