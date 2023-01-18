@@ -142,7 +142,7 @@ input {
 
 /* main css */
 
-header {
+nav {
   position: fixed;
   width: calc(100% - 40px);
   max-width: 640px;
@@ -168,7 +168,7 @@ header {
   height: 100%;
 }
 
-#wrap {
+main {
   width: 100%;
   height: 100%;
   display: flex;
@@ -176,7 +176,7 @@ header {
   justify-content: center;
 }
 
-#container {
+#main-page {
   width: calc(100vw - 40px);
   max-width: 640px;
   padding: 20px;
@@ -210,7 +210,7 @@ header {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transform: translateX(-50%);
 }
-#list-box {
+#post-list {
   height: 100%;
   width: 100%;
   display: flex;
@@ -219,7 +219,7 @@ header {
   padding-top: 160px;
   gap: 20px;
 }
-.list {
+.post {
   width: 100%;
   height: 100px;
   display: flex;
@@ -229,14 +229,14 @@ header {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.list a {
+.post a {
   display: flex;
   width: inherit;
   height: 100%;
   cursor: pointer;
 }
 
-.list-image {
+.post-image {
   height: 100%;
   max-width: 120px;
   min-width: 120px;
@@ -244,15 +244,15 @@ header {
   object-fit: cover;
 }
 
-.list-title,
-.list-content {
+.post-title,
+.post-content {
   width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.description {
+.post-description {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -260,11 +260,12 @@ header {
   margin-left: 16px;
   width: 50%;
 }
-.description > * {
+
+.post-description > * {
   display: inline-block;
 }
 
-.list-title {
+.post-title {
   font-size: 20px;
   font-weight: 700;
   color: #000000;
@@ -278,7 +279,7 @@ header {
 }
 
 /* writePage CSS */
-#write-container {
+#write-page {
   width: 100vw;
   max-width: 640px;
   margin-top: 100px;
@@ -367,13 +368,13 @@ header {
 
 /* Detail CSS */
 
-#detail-container {
+#post-detail {
   width: 100vw;
   max-width: 640px;
   margin-top: 100px;
 }
 
-#detail-container > img {
+#post-article > img {
   width: 100vw;
   height: 360px;
   max-width: 640px;
@@ -465,11 +466,6 @@ header {
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: normal;
-}
-
-#comment-box {
-  width: 100%;
-  max-width: 640px;
 }
 
 #comment-form {
