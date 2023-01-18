@@ -136,6 +136,9 @@ img {
 * {
   font-family: 'Roboto' !important;
 }
+input {
+  font-size: 16px;
+}
 
 /* main css */
 
