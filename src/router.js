@@ -1,5 +1,6 @@
 import Nav from './components/nav.js';
 import DetailPage from './pages/DetailPage.js';
+import EditPage from './pages/EditPage.js';
 import HomePage from './pages/HomePage.js';
 import NotFoundPage from './pages/NotFoundPage.js';
 import WritePage from './pages/WritePage.js';
@@ -9,6 +10,7 @@ const router = async () => {
     { path: '/', element: HomePage },
     { path: '/write', element: WritePage },
     { path: '/detail', element: DetailPage },
+    { path: '/edit', element: EditPage },
   ];
 
   const pageMatchs = routes.map((route) => {
@@ -24,6 +26,7 @@ const router = async () => {
     const page = new NotFoundPage();
     document.querySelector('#root').innerHTML = Nav();
     document.querySelector('#root').innerHTML += page.render();
+    return;
   }
 
   const page = new foundPage.route.element();
