@@ -5,7 +5,7 @@ class HomePage {
   constructor() {
     document.title = 'HPNY 2023';
   }
-  async getPosts() {
+  async #getPosts() {
     const { data } = await axios.get('http://43.201.103.199/posts');
     return this.#listConvertToHtml(data.data.posts);
   }
@@ -14,14 +14,14 @@ class HomePage {
     return lists
       .map((list) => {
         return `
-      <li class='list'>
+      <li class='post'>
         <a href='/detail?id=${list.postId}' class='detail-link'>
           <div>
-            <img src=${list.image} class='list-image'>
+            <img src=${list.image} class='post-image'>
           </div>
-          <div class='description'>
-            <h1 class='list-title'>${list.title}</h1>
-            <span class='list-content'>${list.content}</span>
+          <div class='post-description'>
+            <h1 class='post-title'>${list.title}</h1>
+            <span class='post-content'>${list.content}</span>
           </div>
         </a>
       </li>
@@ -30,22 +30,7 @@ class HomePage {
       .join('');
   }
 
-  async render() {
-    const posts = await this.getPosts();
-
-    document.querySelector('#root').innerHTML += `
-    <div id='wrap'>
-      <div id='container'>
-        <div id='create-post-button-box'>
-          <a href='/write' id='create-post-button'>새 글 작성하기</a>
-        </div>
-        <ul id='list-box'>
-        ${posts}
-        </ul>
-      </div>
-    </div>
-    `;
-
+  #handleLinkEvent() {
     document.querySelectorAll('.detail-link').forEach((elem) => {
       elem.addEventListener('click', (event) => {
         event.preventDefault();
@@ -53,6 +38,24 @@ class HomePage {
         router();
       });
     });
+  }
+
+  async render() {
+    const posts = await this.#getPosts();
+
+    document.querySelector('#root').innerHTML += `
+    <main>
+      <section id='main-page'>
+        <div id='create-post-button-box'>
+          <a href='/write' id='create-post-button'>새 글 작성하기</a>
+        </div>
+        <ul id='post-list'>
+        ${posts}
+        </ul>
+      </section>
+    </main>
+    `;
+    this.#handleLinkEvent();
   }
 }
 

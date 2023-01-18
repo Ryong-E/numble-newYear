@@ -83,28 +83,29 @@ class DetailPage {
     await this.init();
     console.log(this.#comments);
     $('#root').innerHTML += `
-    <div id='wrap'>
-        <div id='detail-container'>
-            <img src=${this.#postInfo.image}>
-            <div id='info-box'>
-                <h1>${this.#postInfo.title}</h1>
-                <span>${this.#postInfo.createdAt.slice(0, 10)}</span>
-                <p>${this.#postInfo.content}</p>
-                <div id='post-detail-button-box'>
-                    <button id='post-update-button'>수정🔨</button>
-                    <button id='post-delete-button'>삭제🗑</button>
-                </div>
-            </div>
-            <ul id='comment-list'>
-            </ul>
-            <div id='comment-box'>
-            <form id='comment-form'>
-              <input type='text' id='comment-input'>
-              <button type='submit' id='comment-button'>게시하기</button>
-            </form>
-            </div>
-        </div>
-    </div>
+    <main>
+        <section id='post-detail'>
+          <article id='post-article'>
+              <img src=${this.#postInfo.image}>
+              <div id='info-box'>
+                  <h1>${this.#postInfo.title}</h1>
+                  <span>${this.#postInfo.createdAt.slice(0, 10)}</span>
+                  <p>${this.#postInfo.content}</p>
+                  <div id='post-detail-button-box'>
+                      <button id='post-update-button'>수정🔨</button>
+                      <button id='post-delete-button'>삭제🗑</button>
+                  </div>
+              </div>
+            </article>
+            <section id='comment-section'>
+              <ul id='comment-list'></ul>
+              <form id='comment-form'>
+                <input type='text' id='comment-input'>
+                <button type='submit' id='comment-button'>게시하기</button>
+              </form>
+            </section>
+        </section>
+    </main>
     `;
     this.#updateComment();
     this.#deleteComment();

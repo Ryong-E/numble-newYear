@@ -70,11 +70,9 @@ class WritePage {
 
   render() {
     $('#root').innerHTML += `
-    <div id='wrap'>
-      <div id='write-container'>
-        <div id='image-upload-box'>
-
-        </div>
+    <main>
+      <section id='write-page'>
+        <div id='image-upload-box'></div>
         <div id='form-box'>
           <form id='write-form'>
             <div id='enter-title'>
@@ -88,8 +86,9 @@ class WritePage {
             <button type='submit' id='write-submit-button' disable='true'>등록하기</button>
           </form>
         </div>
-      </div>
-    </div>    `;
+      </section>
+    </main>    
+    `;
     this.#getRandomImage();
     this.#handleChange();
     this.#handleSubmit();
