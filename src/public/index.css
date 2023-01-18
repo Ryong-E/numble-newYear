@@ -254,7 +254,7 @@ header {
   flex-direction: column;
   padding: 10px;
   margin-left: 16px;
-  width: 300px;
+  width: 400px;
 }
 .description > * {
   display: inline-block;
@@ -362,12 +362,14 @@ header {
 }
 
 /* Detail CSS */
+
 #detail-container {
   width: 100vw;
   max-width: 640px;
   margin-top: 100px;
   padding: 20px;
 }
+
 #detail-container > img {
   width: 100vw;
   height: 360px;
@@ -379,9 +381,31 @@ header {
 
 #info-box {
   position: relative;
-  padding: 20px 30px 50px 30px;
+  padding: 20px 30px 70px 30px;
   border-bottom: 2px solid #e2e2e2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
 }
+
+#info-box > h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#info-box > span {
+  font-size: 12px;
+}
+
+#info-box > p {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  line-height: 25px;
+}
+
 #post-detail-button-box {
   position: absolute;
   right: 30px;
@@ -389,4 +413,84 @@ header {
   justify-content: space-between;
   width: 120px;
   height: 30px;
+  bottom: 30px;
+}
+
+#post-update-button,
+#post-delete-button {
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+#comment-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px 30px 50px 30px;
+  gap: 20px;
+  overflow: scroll;
+}
+
+#comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#comment > button {
+  background-color: #ffffff;
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#comment > p {
+  width: 90%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#comment-box {
+  width: 100%;
+  max-width: 640px;
+}
+
+#comment-form {
+  max-width: 640px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100vw - 20px);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  height: 40px;
+  padding: 0 10px 10px 10px;
+  background-color: #ffffff;
+}
+
+#comment-input {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #dbdbdb;
+  background-color: #fafafa;
+  border-radius: 10px 0 0 10px;
+  padding: 0;
+}
+
+#comment-button {
+  width: 20%;
+  height: 42px;
+  border: 1px solid #dbdbdb;
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+  background-color: #fafafa;
+  padding: 0;
 }
