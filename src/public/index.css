@@ -257,7 +257,7 @@ header {
   flex-direction: column;
   padding: 10px;
   margin-left: 16px;
-  width: 400px;
+  width: 50%;
 }
 .description > * {
   display: inline-block;
