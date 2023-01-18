@@ -408,7 +408,7 @@ header {
 
 #post-detail-button-box {
   position: absolute;
-  right: 30px;
+  right: 0;
   display: flex;
   justify-content: space-between;
   width: 120px;
@@ -451,9 +451,11 @@ header {
 
 #comment > p {
   width: 90%;
+  height: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  line-height: normal;
 }
 
 #comment-box {
@@ -478,11 +480,11 @@ header {
 
 #comment-input {
   width: 80%;
-  height: 40px;
+  height: 20px;
   border: 1px solid #dbdbdb;
   background-color: #fafafa;
   border-radius: 10px 0 0 10px;
-  padding: 0;
+  padding: 10px;
 }
 
 #comment-button {
