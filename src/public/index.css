@@ -414,6 +414,7 @@ header {
   width: 120px;
   height: 30px;
   bottom: 30px;
+  color: black;
 }
 
 #post-update-button,
@@ -448,6 +449,9 @@ header {
   border-radius: 12px;
   cursor: pointer;
   font-size: 12px;
+  width: 20%;
+  max-width: 50px;
+  color: black;
 }
 
 #comment > p {
@@ -496,4 +500,5 @@ header {
   border-left: none;
   background-color: #fafafa;
   padding: 0;
+  color: black;
 }
