@@ -70,7 +70,6 @@ class DetailPage {
         );
         this.#comments.push(writtenComment.data.data);
         $('#comment-input').value = '';
-        console.log(this.#comments);
         this.#updateComment();
       } catch (error) {
         $('#comment-input').value = '';
@@ -81,7 +80,6 @@ class DetailPage {
 
   async render() {
     await this.init();
-    console.log(this.#comments);
     $('#root').innerHTML += `
     <main>
         <section id='post-detail'>

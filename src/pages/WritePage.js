@@ -17,12 +17,10 @@ class WritePage {
   #handleChange() {
     $('#write-title').addEventListener('keyup', (event) => {
       this.#title = event.target.value;
-      console.log(this.#title);
       this.#confirmInput();
     });
     $('#write-content').addEventListener('keyup', (event) => {
       this.#content = event.target.value;
-      console.log(this.#content);
       this.#confirmInput();
     });
   }
