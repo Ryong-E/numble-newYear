@@ -9,7 +9,7 @@ const Nav = () => {
   return `
     <nav ${isHome === '/' && `style='justify-content:flex-end;'`}>
     ${backbutton}
-        <a href='/' id='logo' class='nav-link'>🐇HPNY 2023</a>
+        <a href='/' id='logo' class='nav-link'><img src='http://61.97.184.251/favicon.png'>HPNY 2023</a>
     </nav>
     `;
 };

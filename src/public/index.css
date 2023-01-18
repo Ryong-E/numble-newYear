@@ -141,7 +141,9 @@ input {
 }
 
 /* main css */
-
+.nav-link > img {
+  width: 30px;
+}
 nav {
   position: fixed;
   width: calc(100% - 40px);
