@@ -47,7 +47,7 @@ class DetailPage {
         if (event.target.localName !== 'button') return;
         await axios.delete(`http://43.201.103.199/comment/${event.target.dataset.num}`);
         this.#comments = await this.#comments.filter(
-          (comment) => comment.commentId !== event.target.dataset.num,
+          (comment) => String(comment.commentId) !== event.target.dataset.num,
         );
         this.#updateComment();
       } catch (error) {
@@ -56,8 +56,32 @@ class DetailPage {
     });
   }
 
+  #handleSubmit() {
+    $('#comment-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const comment = $('#comment-input').value;
+      try {
+        if (!comment) throw new Error('실패');
+        const writtenComment = await axios.post(
+          `http://43.201.103.199/comment/${this.#postInfo.postId}`,
+          {
+            content: comment,
+          },
+        );
+        this.#comments.push(writtenComment.data.data);
+        $('#comment-input').value = '';
+        console.log(this.#comments);
+        this.#updateComment();
+      } catch (error) {
+        $('#comment-input').value = '';
+        alert('댓글 작성 실패');
+      }
+    });
+  }
+
   async render() {
     await this.init();
+    console.log(this.#comments);
     $('#root').innerHTML += `
     <div id='wrap'>
         <div id='detail-container'>
@@ -84,6 +108,7 @@ class DetailPage {
     `;
     this.#updateComment();
     this.#deleteComment();
+    this.#handleSubmit();
   }
 }
 
