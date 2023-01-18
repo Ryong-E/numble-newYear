@@ -1,4 +1,4 @@
-import Header from './components/header.js';
+import Nav from './components/nav.js';
 import DetailPage from './pages/DetailPage.js';
 import HomePage from './pages/HomePage.js';
 import NotFoundPage from './pages/NotFoundPage.js';
@@ -22,12 +22,12 @@ const router = async () => {
 
   if (!foundPage) {
     const page = new NotFoundPage();
-    document.querySelector('#root').innerHTML = Header();
+    document.querySelector('#root').innerHTML = Nav();
     document.querySelector('#root').innerHTML += page.render();
   }
 
   const page = new foundPage.route.element();
-  document.querySelector('#root').innerHTML = Header();
+  document.querySelector('#root').innerHTML = Nav();
   await page.render();
 };
 

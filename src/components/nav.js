@@ -1,4 +1,4 @@
-const Header = () => {
+const Nav = () => {
   let backbutton = '';
   const isHome = location.pathname;
 
@@ -7,11 +7,11 @@ const Header = () => {
   }
 
   return `
-    <header ${isHome === '/' && `style='justify-content:flex-end;'`}>
+    <nav ${isHome === '/' && `style='justify-content:flex-end;'`}>
     ${backbutton}
         <a href='/' id='logo'>🐇HPNY 2023</a>
-    </header>
+    </nav>
     `;
 };
 
-export default Header;
+export default Nav;
