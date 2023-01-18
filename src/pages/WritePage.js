@@ -79,11 +79,11 @@ class WritePage {
           <form id='write-form'>
             <div id='enter-title'>
               <h1>제목</h1>
-              <input id='write-title' type='text' name='title' placeholder='글 제목을 입력해주세요'>
+              <input id='write-title' type='text' name='title' placeholder='글 제목을 입력해주세요' maxlength='30'>
             </div>
             <div id='enter-content'>
               <h1>내용</h1>
-              <textarea id='write-content' name='content' placeholder='내용을 입력해주세요'></textarea>
+              <textarea id='write-content' name='content' placeholder='내용을 입력해주세요' maxlength='500'></textarea>
             </div>
             <button type='submit' id='write-submit-button' disable='true'>등록하기</button>
           </form>
