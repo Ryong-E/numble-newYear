@@ -78,6 +78,20 @@ class DetailPage {
     });
   }
 
+  #handleClick() {
+    $('#post-detail-button-box').addEventListener('click', async (event) => {
+      if (event.target.id === 'post-delete-button') {
+        await axios.delete(`http://43.201.103.199/post/${this.#postInfo.postId}`);
+        history.replaceState(null, null, '/');
+        router();
+      }
+      if (event.target.id === 'post-update-button') {
+        history.pushState(null, null, `/edit?id=${this.#postInfo.postId}`);
+        router();
+      }
+    });
+  }
+
   async render() {
     await this.init();
     $('#root').innerHTML += `
@@ -108,6 +122,7 @@ class DetailPage {
     this.#updateComment();
     this.#deleteComment();
     this.#handleSubmit();
+    this.#handleClick();
   }
 }
 
