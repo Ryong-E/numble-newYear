@@ -447,6 +447,7 @@ header {
   border: 1px solid black;
   border-radius: 12px;
   cursor: pointer;
+  font-size: 12px;
 }
 
 #comment > p {
