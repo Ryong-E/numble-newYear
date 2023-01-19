@@ -18,7 +18,7 @@ class DetailPage {
     return data.data;
   }
 
-  async init() {
+  async #init() {
     try {
       const responsePostInfo = await this.#getPostInfo();
       this.#postInfo = responsePostInfo.post;
@@ -89,6 +89,7 @@ class DetailPage {
           router();
         }
       }
+
       if (event.target.id === 'post-update-button') {
         history.pushState(null, null, `/edit?id=${this.#postInfo.postId}`);
         router();
@@ -97,7 +98,7 @@ class DetailPage {
   }
 
   async render() {
-    await this.init();
+    await this.#init();
     $('#root').innerHTML += `
     <main>
         <section id='post-detail'>
@@ -123,6 +124,7 @@ class DetailPage {
         </section>
     </main>
     `;
+
     this.#updateComment();
     this.#deleteComment();
     this.#handleSubmit();
