@@ -1,5 +1,6 @@
 import axios from 'axios';
 import router from '../router';
+import $ from '../utils/DOMSelector';
 
 class HomePage {
   constructor() {
@@ -15,7 +16,7 @@ class HomePage {
       .map((list) => {
         return `
       <li class='post'>
-        <a href='/detail?id=${list.postId}' class='detail-link'>
+        <a href='/detail?id=${list.postId}' class='detail-link nav-link'>
           <div>
             <img src=${list.image} class='post-image'>
           </div>
@@ -30,24 +31,14 @@ class HomePage {
       .join('');
   }
 
-  #handleLinkEvent() {
-    document.querySelectorAll('.detail-link').forEach((elem) => {
-      elem.addEventListener('click', (event) => {
-        event.preventDefault();
-        history.pushState(null, null, event.currentTarget.href);
-        router();
-      });
-    });
-  }
-
   async render() {
     const posts = await this.#getPosts();
 
-    document.querySelector('#root').innerHTML += `
+    $('#root').innerHTML += `
     <main>
       <section id='main-page'>
         <div id='create-post-button-box'>
-          <a href='/write' id='create-post-button'>새 글 작성하기</a>
+          <a href='/write' id='create-post-button' class='nav-link'>새 글 작성하기</a>
         </div>
         <ul id='post-list'>
         ${posts}
@@ -55,7 +46,6 @@ class HomePage {
       </section>
     </main>
     `;
-    this.#handleLinkEvent();
   }
 }
 
