@@ -1,4 +1,4 @@
-function getSearchParam(key) {
+const getSearchParam = (key) => {
   return new URLSearchParams(location.search).get(key);
-}
+};
 export default getSearchParam;
