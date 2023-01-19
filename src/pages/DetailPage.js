@@ -1,4 +1,4 @@
-import axios from 'axios';
+import postApi from '../api/postApi';
 import router from '../router';
 import $ from '../utils/DOMSelector';
 import getSearchParam from '../utils/getSearchParam';
@@ -14,8 +14,8 @@ class DetailPage {
 
   async #getPostInfo() {
     const param = getSearchParam('id');
-    const { data } = await axios.get(`http://43.201.103.199/post/${param}`);
-    return data.data;
+    const receivedPostInfo = await postApi.get(`/post/${param}`);
+    return receivedPostInfo.data;
   }
 
   async #init() {
@@ -46,7 +46,7 @@ class DetailPage {
       try {
         if (event.target.localName !== 'button') return;
         if (confirm('정말 삭제하시겠습니까?')) {
-          await axios.delete(`http://43.201.103.199/comment/${event.target.dataset.num}`);
+          await postApi.delete(`/comment/${event.target.dataset.num}`);
           this.#comments = await this.#comments.filter(
             (comment) => String(comment.commentId) !== event.target.dataset.num,
           );
@@ -64,13 +64,12 @@ class DetailPage {
       const comment = $('#comment-input').value;
       try {
         if (!comment) throw new Error('실패');
-        const writtenComment = await axios.post(
-          `http://43.201.103.199/comment/${this.#postInfo.postId}`,
-          {
-            content: comment,
-          },
-        );
-        this.#comments.push(writtenComment.data.data);
+
+        const writtenComment = await postApi.post(`/comment/${this.#postInfo.postId}`, {
+          content: comment,
+        });
+
+        this.#comments.push(writtenComment.data);
         $('#comment-input').value = '';
         this.#updateComment();
       } catch (error) {
@@ -84,7 +83,7 @@ class DetailPage {
     $('#post-detail-button-box').addEventListener('click', async (event) => {
       if (event.target.id === 'post-delete-button') {
         if (confirm('정말 삭제하시겠습니까?')) {
-          await axios.delete(`http://43.201.103.199/post/${this.#postInfo.postId}`);
+          await postApi.delete(`/post/${this.#postInfo.postId}`);
           history.replaceState(null, null, '/');
           router();
         }

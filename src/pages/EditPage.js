@@ -1,4 +1,4 @@
-import axios from 'axios';
+import postApi from '../api/postApi';
 import router from '../router';
 import $ from '../utils/DOMSelector';
 import getSearchParam from '../utils/getSearchParam';
@@ -27,8 +27,8 @@ class EditPage {
 
   async #init() {
     const param = getSearchParam('id');
-    const { data } = await axios.get(`http://43.201.103.199/post/${param}`);
-    this.#postInfo = data.data.post;
+    const receivedPostInfo = await postApi.get(`/post/${param}`);
+    this.#postInfo = receivedPostInfo.data.post;
     this.#title = this.#postInfo.title;
     this.#content = this.#postInfo.content;
   }
@@ -49,7 +49,7 @@ class EditPage {
   async #handleSubmit() {
     $('#edit-form').addEventListener('submit', async (event) => {
       event.preventDefault();
-      await axios.patch(`http://43.201.103.199/post/${getSearchParam('id')}`, {
+      await postApi.patch(`/post/${getSearchParam('id')}`, {
         title: this.#title,
         content: this.#content,
       });

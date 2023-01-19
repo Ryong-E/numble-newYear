@@ -1,4 +1,4 @@
-import axios from 'axios';
+import postApi from '../api/postApi';
 import $ from '../utils/DOMSelector';
 
 class HomePage {
@@ -7,8 +7,8 @@ class HomePage {
   }
 
   async #getPosts() {
-    const { data } = await axios.get('http://43.201.103.199/posts');
-    return this.#listConvertToHtml(data.data.posts);
+    const receivedPosts = await postApi.get('/posts');
+    return this.#listConvertToHtml(receivedPosts.data.posts);
   }
 
   #listConvertToHtml(lists) {

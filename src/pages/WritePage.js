@@ -1,4 +1,5 @@
-import axios from 'axios';
+import postApi from '../api/postApi';
+import unsplashApi from '../api/unsplashApi';
 import router from '../router';
 import disableImageUpload from '../utils/disableImageUpload';
 import $ from '../utils/DOMSelector';
@@ -27,10 +28,8 @@ class WritePage {
 
   async #getRandomImage() {
     $('#image-upload-box').addEventListener('click', async (event) => {
-      const randomImage = await axios.get('https://api.unsplash.com/photos/random', {
-        headers: { Authorization: 'Client-ID 1eN_29BT8sX_Ixgn7-T5KZnRM5EAI8m8aOgl5q2eul8' },
-      });
-      this.#imageUrl = randomImage.data.urls.regular;
+      const receivedRandomImage = await unsplashApi.get('/');
+      this.#imageUrl = receivedRandomImage.urls.regular;
       disableImageUpload();
       this.#confirmInput();
     });
@@ -40,7 +39,7 @@ class WritePage {
     $('#write-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       try {
-        await axios.post('http://43.201.103.199/post', {
+        await postApi.post('/post', {
           title: this.#title,
           content: this.#content,
           image: this.#imageUrl,
