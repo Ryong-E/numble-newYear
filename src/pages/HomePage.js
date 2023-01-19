@@ -1,11 +1,11 @@
 import axios from 'axios';
-import router from '../router';
 import $ from '../utils/DOMSelector';
 
 class HomePage {
   constructor() {
     document.title = 'HPNY 2023';
   }
+
   async #getPosts() {
     const { data } = await axios.get('http://43.201.103.199/posts');
     return this.#listConvertToHtml(data.data.posts);

@@ -87,6 +87,7 @@ class WritePage {
       </section>
     </main>    
     `;
+
     this.#getRandomImage();
     this.#handleChange();
     this.#handleSubmit();
