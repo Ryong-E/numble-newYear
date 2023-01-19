@@ -25,7 +25,7 @@ class EditPage {
     });
   }
 
-  async init() {
+  async #init() {
     const param = getSearchParam('id');
     const { data } = await axios.get(`http://43.201.103.199/post/${param}`);
     this.#postInfo = data.data.post;
@@ -57,8 +57,9 @@ class EditPage {
       router();
     });
   }
+
   async render() {
-    await this.init();
+    await this.#init();
     $('#root').innerHTML += `
     <main>
       <section id="write-page">
